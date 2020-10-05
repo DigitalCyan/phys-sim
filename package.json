@@ -1,0 +1,14 @@
+{
+  "name": "phys-sim",
+  "version": "1.0.0",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@types/node": "^14.11.2",
+    "nodemon": "^2.0.4",
+    "typescript": "^4.0.3"
+  }
+}
