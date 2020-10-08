@@ -2,13 +2,19 @@
 // Setup
 var canvas = document.getElementById('simcanvas');
 var ctx = canvas.getContext('2d');
-canvas.width = 500;
+var toggleTrajectory = (document.getElementById('toggleTrajectory'));
+var radiusNumber = document.getElementById('radiusNumber');
 canvas.height = 500;
+canvas.width = 500;
 var gravity = -9.83;
 var simObjects = [];
-var spaceScale = 0.075;
+var spaceScale = 0.025;
+var radius = 300;
 var dt = 0.001; // In seconds
 var firstPos;
+radiusNumber.value = radius.toString();
+var scaleP = document.getElementById("scaleP");
+scaleP.innerHTML = "Space scale: " + spaceScale + "[px/m]";
 // Rendering
 var renderSimObject = function (simObject) {
     ctx.beginPath();
@@ -18,6 +24,17 @@ var renderSimObject = function (simObject) {
 var renderSimObjects = function (simObjects) {
     simObjects.forEach(function (simObject) {
         renderSimObject(simObject);
+    });
+};
+var renderSimObjectTrajectory = function (simObject) {
+    ctx.beginPath();
+    ctx.moveTo(simObject.position.x, canvas.height - simObject.position.y);
+    ctx.lineTo(simObject.position.x + simObject.vel.x, canvas.height - simObject.position.y - simObject.vel.y);
+    ctx.stroke();
+};
+var renderSimobjectsTrajectories = function (simObject) {
+    simObjects.forEach(function (simObject) {
+        renderSimObjectTrajectory(simObject);
     });
 };
 // Physics
@@ -36,6 +53,10 @@ var processSimObjects = function (simObjects) {
         }
     });
 };
+// Settings
+radiusNumber.addEventListener('change', function (e) {
+    radius = parseInt(radiusNumber.value);
+});
 // Main
 canvas.addEventListener('mousedown', function (e) {
     firstPos = {
@@ -50,19 +71,22 @@ canvas.addEventListener('mouseup', function (e) {
     };
     simObjects.push({
         position: {
-            x: e.offsetX,
-            y: canvas.height - e.offsetY,
+            x: firstPos.x,
+            y: firstPos.y,
         },
         vel: {
-            x: (secondPos.x - firstPos.x) * spaceScale * 5,
-            y: (secondPos.y - firstPos.y) * spaceScale * 5,
+            x: (secondPos.x - firstPos.x),
+            y: (secondPos.y - firstPos.y),
         },
-        rad: 30,
+        rad: radius,
     });
 });
 var mainloop = function () {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     processSimObjects(simObjects);
     renderSimObjects(simObjects);
+    if (toggleTrajectory.checked) {
+        renderSimobjectsTrajectories(simObjects);
+    }
 };
 setInterval(mainloop, dt * 1000);

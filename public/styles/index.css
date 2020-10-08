@@ -1,3 +1,27 @@
-#simcanvas{
-    border: 1px solid black;
+main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  height: 100%;
 }
+
+main #settings {
+  margin: 0.1cm 1cm;
+}
+
+main #simcanvas {
+  border: 1px solid black;
+}
+
+main input::-webkit-outer-spin-button,
+main input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/*# sourceMappingURL=index.css.map */

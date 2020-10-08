@@ -1,13 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="styles/index.css">
-    <script defer src="js/index.js"></script>
-</head>
-<body>
-    <Canvas id="simcanvas"></Canvas>
-</body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>phys-sim</title>
+        <link rel="stylesheet" href="styles/index.css" />
+        <script defer src="js/index.js" type="module"></script>
+    </head>
+    <body>
+        <header>
+            <p>Click, drag and release within the canvas to spawn an object.</p>
+        </header>
+        <main>
+            <canvas id="simcanvas"></canvas>
+            <div id="settings">
+                <p>phys-sim settings:</p>
+                <div>
+                    <label>Display trajectory</label>
+                    <input id="toggleTrajectory" type="checkbox" />
+                </div>
+                <div>
+                    <label>Radius</label>
+                    <input id="radiusNumber" type="number" />
+                </div>
+                <div>
+                    <p>Info</p>
+                    <div>
+                        <p name="scaleP" id="scaleP">#SCALE</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </body>
 </html>

@@ -1,0 +1,20 @@
+main {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: 100%;
+
+    #settings {
+        margin: 0.1cm 1cm;
+    }
+
+    #simcanvas {
+        border: 1px solid black;
+    }
+
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+}
