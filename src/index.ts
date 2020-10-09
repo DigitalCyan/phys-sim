@@ -2,6 +2,8 @@
 const canvas = <HTMLCanvasElement>document.getElementById('simcanvas');
 const ctx = <CanvasRenderingContext2D>canvas.getContext('2d');
 
+import {SimObject, Vector2} from './interfaces';
+
 const toggleTrajectory = <HTMLInputElement>(
     document.getElementById('toggleTrajectory')
 );
@@ -22,17 +24,6 @@ radiusNumber.value = radius.toString();
 const scaleP = <HTMLParagraphElement>document.getElementById("scaleP");
 scaleP.innerHTML = `Space scale: ${spaceScale}[px/m]`;
 
-// Interfaces
-interface Vector2 {
-    x: number;
-    y: number;
-}
-
-interface SimObject {
-    position: Vector2;
-    vel: Vector2;
-    rad: number;
-}
 // Rendering
 const renderSimObject = (simObject: SimObject) => {
     ctx.beginPath();

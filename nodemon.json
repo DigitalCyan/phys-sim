@@ -1,4 +1,4 @@
 {
     "ext": "ts",
-    "exec": "tsc || exit 1"
+    "exec": "webpack || exit 1"
 }
