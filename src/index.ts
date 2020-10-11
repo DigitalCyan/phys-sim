@@ -1,5 +1,5 @@
 // @ts-ignore
-import Sim from './Modules/Sim.ts';
+import Sim from './Modules/Sim';
 
-const sim = new Sim();
-sim.init()
+const sim = Sim.instance;
+
