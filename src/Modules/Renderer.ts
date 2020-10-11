@@ -14,8 +14,8 @@ export default class Renderer {
     //#endregion
 
     // Canvas
-    private _canvas = <HTMLCanvasElement>document.getElementById('simCanvas');
-    private _ctx = <CanvasRenderingContext2D>this._canvas.getContext('2d');
+    private _canvas: HTMLCanvasElement | null = null;
+    private _ctx: CanvasRenderingContext2D | null = null;
 
     // Vars
     private _spaceScale: number = 1;
@@ -24,7 +24,9 @@ export default class Renderer {
         y: 0,
     };
 
+    // Methods
     public init(simConfig: SimConfig) {
+        this._canvas = simConfig.canvas;
         this._canvas.width = simConfig.width;
         this._canvas.height = simConfig.height;
         this._spaceScale = simConfig.spaceScale;
@@ -32,10 +34,12 @@ export default class Renderer {
             x: 0,
             y: this._canvas.height,
         };
+
+        this._canvas.getContext('2d');
     }
 
     public clear() {
-        this._ctx.clearRect(0, 0, this._canvas.width, this._canvas.height);
+        this._ctx!.clearRect(0, 0, this._canvas!.width, this._canvas!.height);
     }
 
     public renderSimObjects(simObjects: Array<SimObject>) {
@@ -45,14 +49,14 @@ export default class Renderer {
     }
 
     public renderSimObject(simObject: SimObject) {
-        this._ctx.beginPath();
-        this._ctx.arc(
-            (this._root.x + simObject.position.x),
-            (this._root.y - simObject.position.y),
+        this._ctx!.beginPath();
+        this._ctx!.arc(
+            this._root.x + simObject.position.x,
+            this._root.y - simObject.position.y,
             simObject.rad * this._spaceScale,
             0,
             2 * Math.PI
         );
-        this._ctx.fill();
+        this._ctx!.fill();
     }
 }

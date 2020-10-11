@@ -17,6 +17,7 @@ export default class Processor {
     private _deltaTime: number = 1;
     private _spacescale: number = 1;
 
+    // Methods
     public init(simConfig: SimConfig) {
         this._gravity = simConfig.gravity;
         this._deltaTime = simConfig.deltaTime;
