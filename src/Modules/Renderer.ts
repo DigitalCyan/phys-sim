@@ -35,8 +35,6 @@ export default class Renderer {
             x: 0,
             y: this._canvas.height,
         };
-
-        this._canvas.getContext('2d');
     }
 
     public clear() {
