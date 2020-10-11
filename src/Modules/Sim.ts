@@ -46,17 +46,6 @@ export default class Sim {
     }
 
     private initMainloop() {
-        this._simObjects.push({
-            position: {
-                x: 150,
-                y: 150,
-            },
-            vel: {
-                x: 0,
-                y: 0,
-            },
-            rad: 150
-        })
         const mainloop = () => {
             this._renderer.clear();
             this._processor.processSimObjects(this._simObjects);
