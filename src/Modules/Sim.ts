@@ -28,7 +28,7 @@ export default class Sim {
 
     // Default simulation config
     private _defaultSimConfig: SimConfig = {
-        canvas: <HTMLCanvasElement>document.getElementById('simCanvas'),
+        canvas: <HTMLCanvasElement>document.querySelector('canvas'),
         width: 300,
         height: 300,
         gravity: -9.81,

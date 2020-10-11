@@ -27,6 +27,7 @@ export default class Renderer {
     // Methods
     public init(simConfig: SimConfig) {
         this._canvas = simConfig.canvas;
+        this._ctx = this._canvas.getContext('2d')
         this._canvas.width = simConfig.width;
         this._canvas.height = simConfig.height;
         this._spaceScale = simConfig.spaceScale;
